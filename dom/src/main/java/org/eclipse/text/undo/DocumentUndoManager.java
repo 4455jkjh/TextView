@@ -100,7 +100,7 @@ public class DocumentUndoManager implements IDocumentUndoManager {
 		 * @param manager the undo manager for this change
 		 */
 		UndoableTextChange(DocumentUndoManager manager) {
-			super(UndoMessages.getString("DocumentUndoManager.operationLabel")); //$NON-NLS-1$
+			super(UndoMessages.getString1("DocumentUndoManager.operationLabel")); //$NON-NLS-1$
 			this.fDocumentUndoManager= manager;
 			addContext(manager.getUndoContext());
 		}

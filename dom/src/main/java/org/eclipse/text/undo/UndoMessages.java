@@ -11,6 +11,7 @@
 package org.eclipse.text.undo;
 
 import java.text.MessageFormat;
+import java.util.ListResourceBundle;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -19,16 +20,13 @@ import java.util.ResourceBundle;
  *
  * @since 3.2
  */
-final class UndoMessages {
+public final class UndoMessages extends ListResourceBundle {
 
 	private static final String BUNDLE_NAME= "org.eclipse.text.undo.UndoMessages"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE= ResourceBundle.getBundle(BUNDLE_NAME);
 
-	private UndoMessages() {
-	}
-
-	public static String getString(String key) {
+	public static String getString1(String key) {
 		try {
 			return RESOURCE_BUNDLE.getString(key);
 		} catch (MissingResourceException e) {
@@ -41,6 +39,14 @@ final class UndoMessages {
 	}
 
 	public static String getFormattedString(String key, Object[] args) {
-		return MessageFormat.format(getString(key), args);
+		return MessageFormat.format(getString1(key), args);
 	}
+
+	@Override
+	protected Object[][] getContents() {
+		return contents;
+	}
+	private static Object[][] contents = {
+			{"DocumentUndoManager.operationLabel", "Typing"}
+	};
 }
